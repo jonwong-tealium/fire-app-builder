@@ -99,5 +99,6 @@ dependencies {
     compile project(':AMZNMediaPlayerComponent')
     compile project(':PassThroughAdsComponent')
     compile project(':PassThroughLoginComponent')
-    compile project(':LoggerAnalyticsComponent')
+//    compile project(':LoggerAnalyticsComponent')
+    compile project(':TealiumAnalyticsComponent')
 }
