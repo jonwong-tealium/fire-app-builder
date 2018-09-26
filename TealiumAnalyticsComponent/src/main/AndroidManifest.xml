@@ -6,12 +6,6 @@
 
         <meta-data android:name="AMZNAP@TealiumAnalytics"
             android:value="IAnalytics@com.amazon.analytics.tealium.TealiumAnalyticsImplCreator" />
-        <!--<receiver android:name="com.amazon.analytics.tealium.TealiumAnalyticsImplCreator"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.amazon.module.init"/>-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
+
     </application>
 </manifest>

@@ -34,8 +34,9 @@ allprojects {
         if (rootProject.hasProperty('mavenUrl')) {
             maven { url rootProject.mavenUrl }
         }
-        flatDir {
-            dirs 'libs'
+
+        maven {
+            url "http://maven.tealiumiq.com/android/releases/"
         }
     }
 }
