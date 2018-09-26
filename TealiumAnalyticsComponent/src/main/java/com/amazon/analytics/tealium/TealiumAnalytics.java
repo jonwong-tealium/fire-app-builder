@@ -68,8 +68,8 @@ public class TealiumAnalytics implements IAnalytics {
 
     @Override
     public void trackState(String screen) {
-        Log.d(TAG, "Track screen: " + screen);
         mTealium.trackView(screen, null);
+        Log.d(TAG, "Track screen: " + screen);
     }
 
     @Override
