@@ -80,7 +80,7 @@ public class TealiumAnalyticsTest {
     }
 
     @Test
-    public void configure() throws Exception {
+    public void configure() {
         mTealiumAnalytics.configure(mContext);
 
         assertNotNull(mTealiumAnalytics);

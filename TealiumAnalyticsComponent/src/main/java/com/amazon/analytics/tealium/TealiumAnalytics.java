@@ -11,10 +11,19 @@ import com.amazon.analytics.IAnalytics;
 import com.tealium.library.Tealium;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class TealiumAnalytics implements IAnalytics {
 
     private static final String TAG = TealiumAnalytics.class.getSimpleName();
+
+    // todo: use library latest with constants
+    public static final String VIDEO_PLAYHEAD = "video_playhead";
+    public static final String VIDEO_ID = "video_id";
+    public static final String VIDEO_LENGTH = "video_length";
+    public static final String VIDEO_MILESTONE = "video_milestone";
+    public static final String VIDEO_NAME = "video_name";
+    public static final String VIDEO_PLATFORM = "video_platform";
 
     private Tealium mTealium;
     private CustomAnalyticsTags mCustomAnalyticsTags = new CustomAnalyticsTags();
@@ -58,6 +67,33 @@ public class TealiumAnalytics implements IAnalytics {
         if (action != null && contextDataObjectMap != null) {
             for (String key : contextDataObjectMap.keySet()) {
                 contextData.put(key, String.valueOf(contextDataObjectMap.get(key)));
+                String value = String.valueOf(contextDataObjectMap.get(key));
+                Long videoDuration;
+
+                switch (key) {
+                    case AnalyticsTags.ATTRIBUTE_VIDEO_CURRENT_POSITION:
+                        contextData.put(VIDEO_PLAYHEAD, value);
+                        break;
+                    case AnalyticsTags.ATTRIBUTE_VIDEO_ID:
+                        contextData.put(VIDEO_ID, value);
+                        break;
+                    case AnalyticsTags.ATTRIBUTE_VIDEO_DURATION:
+                        videoDuration = (Long) contextDataObjectMap.get(AnalyticsTags.ATTRIBUTE_VIDEO_DURATION);
+                        contextData.put(VIDEO_LENGTH, getVideoDuration(videoDuration));
+                        break;
+                    case AnalyticsTags.ATTRIBUTE_VIDEO_SECONDS_WATCHED:
+                        videoDuration = (Long) contextDataObjectMap.get(AnalyticsTags.ATTRIBUTE_VIDEO_DURATION);
+                        if (videoDuration != null) {
+                            contextData.put(VIDEO_MILESTONE, getMilestone(videoDuration, Long.valueOf(value)));
+                        }
+                        break;
+                    case AnalyticsTags.ATTRIBUTE_TITLE:
+                        contextData.put(VIDEO_NAME, value);
+                        break;
+                    default:
+                        contextData.put(key, value);
+                        break;
+                }
             }
 
             mTealium.trackEvent(mCustomAnalyticsTags.getCustomTag(action),
@@ -76,5 +112,14 @@ public class TealiumAnalytics implements IAnalytics {
     public void trackCaughtError(String errorMessage, Throwable t) {
         mTealium.trackEvent(errorMessage, null);
         Log.d(TAG, "Tracking caught error: " + errorMessage);
+    }
+
+    private String getVideoDuration(Long videoDuration) {
+        return String.valueOf(TimeUnit.MILLISECONDS.toSeconds(videoDuration));
+    }
+
+    private String getMilestone(Long videoDuration, Long secondsWatched) {
+        int percentage = (int) ((double) secondsWatched / videoDuration * 100);
+        return String.valueOf(percentage);
     }
 }
