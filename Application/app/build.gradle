@@ -21,6 +21,9 @@ apply from: "../artifacts.gradle"
 repositories {
     // Uncomment when using CrashlyticsComponent
     //maven { url 'https://maven.fabric.io/public' }
+
+    // Uncomment when using TealiumAnalyticsComponent
+//    maven { url "http://maven.tealiumiq.com/android/releases/" }
 }
 
 buildscript {

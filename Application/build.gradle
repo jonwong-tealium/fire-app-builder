@@ -34,9 +34,5 @@ allprojects {
         if (rootProject.hasProperty('mavenUrl')) {
             maven { url rootProject.mavenUrl }
         }
-
-        maven {
-            url "http://maven.tealiumiq.com/android/releases/"
-        }
     }
 }

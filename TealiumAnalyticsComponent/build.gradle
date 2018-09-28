@@ -1,5 +1,13 @@
 apply plugin: 'com.android.library'
 
+repositories {
+    mavenCentral()
+
+    maven {
+        url "http://maven.tealiumiq.com/android/releases/"
+    }
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.0"
