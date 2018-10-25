@@ -1,7 +1,4 @@
-package com.tealium.tealiumanalyticscomponent;
-
-import com.amazon.analytics.tealium.TealiumAnalytics;
-import com.amazon.analytics.tealium.TealiumAnalyticsImplCreator;
+package com.amazon.analytics.tealium;
 
 import org.junit.After;
 import org.junit.Before;

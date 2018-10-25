@@ -1,12 +1,10 @@
-package com.tealium.tealiumanalyticscomponent;
+package com.amazon.analytics.tealium;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.amazon.analytics.AnalyticsTags;
-import com.amazon.analytics.tealium.BuildConfig;
-import com.amazon.analytics.tealium.TealiumAnalytics;
 import com.tealium.library.Tealium;
 
 import org.junit.After;

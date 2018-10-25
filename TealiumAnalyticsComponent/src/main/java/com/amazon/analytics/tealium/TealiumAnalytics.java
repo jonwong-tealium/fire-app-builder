@@ -13,11 +13,11 @@ import com.tealium.library.Tealium;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import static com.tealium.library.DataSources.Key.VIDEO_PLAYHEAD;
 import static com.tealium.library.DataSources.Key.VIDEO_ID;
 import static com.tealium.library.DataSources.Key.VIDEO_LENGTH;
 import static com.tealium.library.DataSources.Key.VIDEO_MILESTONE;
 import static com.tealium.library.DataSources.Key.VIDEO_NAME;
+import static com.tealium.library.DataSources.Key.VIDEO_PLAYHEAD;
 
 public class TealiumAnalytics implements IAnalytics {
 
