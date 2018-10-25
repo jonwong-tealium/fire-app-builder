@@ -13,18 +13,15 @@ import com.tealium.library.Tealium;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import static com.tealium.library.DataSources.Key.VIDEO_PLAYHEAD;
+import static com.tealium.library.DataSources.Key.VIDEO_ID;
+import static com.tealium.library.DataSources.Key.VIDEO_LENGTH;
+import static com.tealium.library.DataSources.Key.VIDEO_MILESTONE;
+import static com.tealium.library.DataSources.Key.VIDEO_NAME;
+
 public class TealiumAnalytics implements IAnalytics {
 
     private static final String TAG = TealiumAnalytics.class.getSimpleName();
-
-    // todo: use library latest with constants
-    public static final String VIDEO_PLAYHEAD = "video_playhead";
-    public static final String VIDEO_ID = "video_id";
-    public static final String VIDEO_LENGTH = "video_length";
-    public static final String VIDEO_MILESTONE = "video_milestone";
-    public static final String VIDEO_NAME = "video_name";
-    public static final String VIDEO_PLATFORM = "video_platform";
-
     private Tealium mTealium;
     private CustomAnalyticsTags mCustomAnalyticsTags = new CustomAnalyticsTags();
 
@@ -66,7 +63,6 @@ public class TealiumAnalytics implements IAnalytics {
 
         if (action != null && contextDataObjectMap != null) {
             for (String key : contextDataObjectMap.keySet()) {
-                contextData.put(key, String.valueOf(contextDataObjectMap.get(key)));
                 String value = String.valueOf(contextDataObjectMap.get(key));
                 Long videoDuration;
 
